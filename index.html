@@ -1,1 +1,33 @@
-dhruv 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notification Test</title>
+</head>
+<body>
+    <button onclick="sendNotification()">
+        Test Notification
+    </button>
+
+    <script>
+        function sendNotification() {
+
+            Notification.requestPermission().then(permission => {
+
+                if (permission === "granted") {
+
+                    setTimeout(() => {
+                        new Notification("Reminder", {
+                            body: "This is a test notification!"
+                        });
+                    }, 5000);
+
+                } else {
+                    alert("Notification permission denied.");
+                }
+
+            });
+
+        }
+    </script>
+</body>
+</html>
