@@ -8,26 +8,17 @@
         Test Notification
     </button>
 
-    <script>
-        function sendNotification() {
+    <button onclick="test()">Test</button>
 
-            Notification.requestPermission().then(permission => {
+<script>
+function test() {
+    console.log("Permission:", Notification.permission);
 
-                if (permission === "granted") {
-
-                    setTimeout(() => {
-                        new Notification("Reminder", {
-                            body: "This is a test notification!"
-                        });
-                    }, 5000);
-
-                } else {
-                    alert("Notification permission denied.");
-                }
-
-            });
-
-        }
-    </script>
+    Notification.requestPermission().then(result => {
+        alert("Result: " + result);
+        console.log(result);
+    });
+}
+</script>
 </body>
 </html>
